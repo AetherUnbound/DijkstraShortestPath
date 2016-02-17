@@ -18,6 +18,7 @@ string strReverse(string);
 int main()
 {   
 	//run the dijkstra algorithm for each vertex of the graph given
+	// depending on the size of the initialized graph
 	for (int i = 0; i < V; i++){
 		dijkstra(graph, i);
 	}
@@ -27,7 +28,8 @@ int main()
 
 //Function that implements Dijkstra's single source shortest path algorithm
 // for a graph represented using adjacency matrix representation
-//==This code has been copied and motified from "Geeks for Geeks" (http://www.geeksforgeeks.org/greedy-algorithms-set-6-dijkstras-shortest-path-algorithm/)==
+/////This code has been copied and motified from "Geeks for Geeks" 
+/////http://www.geeksforgeeks.org/greedy-algorithms-set-6-dijkstras-shortest-path-algorithm/
 void dijkstra(int graph[V][V], int startingVertex) {	
      int dist[V];     // The output array.  dist[i] will hold the shortest
                       // distance from src to i
@@ -106,7 +108,8 @@ int printSolution(int dist[], int n, Node array[])
 	   //  trace back path to source node
 	   Node curr = array[i];
 	   string output = "";
-	   output += to_string(curr.nodeNum);
+	   //Need to reverse number if > 9
+	   output += to_string(numReverse(curr.nodeNum));
 	   while (!flag) {		
 		   //Check to see if current node is source node
 		   if (curr.nodeNum == curr.parent) {
@@ -138,7 +141,7 @@ int numReverse(int src) {
 }
 
 //Function to print string backwards
-string strReverse(string src) {\
+string strReverse(string src) {
 	string temp = "";
 	for (int x = src.length()-1; x >=0; x--)
 		temp += src[x];
